@@ -1,28 +1,57 @@
-document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('registrationForm').addEventListener('submit', function(event) {
-         if (!validateForm()) {
-            event.preventDefault();
-         }
-      });
+var a = 0; 
+var b = 0; 
 
-      function validateForm() {
-         var checkbox = document.getElementById('declarationCheckbox');
-         var password = document.querySelector('input[type="password"]');
-         var confirmPassword = document.querySelector('input[type="password"][placeholder="Confirm Password"]');
+function pass() {
+    if (a == 1) {
+        document.getElementById('password').type = 'password';
+        document.getElementById('pass-icon').src = 'hide.png';
+        a = 0;
+    } else {
+        document.getElementById('password').type = 'text';
+        document.getElementById('pass-icon').src = 'show.png';
+        a = 1;
+    }
+}
 
-         // Check if the checkbox is not checked
-         if (!checkbox.checked) {
-            alert("Please declare that the information provided is true and correct.");
-            return false;
-         }
+function pass1() {
+    if (b == 1) {
+        document.getElementById('confirmPassword').type = 'password';
+        document.getElementById('pass-icon-confirm').src = 'hide.png';
+        b = 0;
+    } else {
+        document.getElementById('confirmPassword').type = 'text';
+        document.getElementById('pass-icon-confirm').src = 'show.png';
+        b = 1;
+    }
+}
+function validateForm() {
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+    let message = document.getElementById("message");
 
-         // Check if the password and confirm password match
-         if (password.value !== confirmPassword.value) {
-            alert("Passwords do not match. Please re-enter your passwords.");
-            return false;
-         }
+    if (password !== confirmPassword) {
+        message.textContent = "Warning: Passwords do not match. Please check again.";
+        message.style.backgroundColor = "#ff4d4d";
+        return false; 
+    } else {
+        message.textContent = "";
+        message.style.backgroundColor = "";
+        return true; 
+    }
+}
+function checkPhoneNumber() {
+    let phoneNumberInput = document.getElementById("phoneNumber");
+    let phoneNumber = phoneNumberInput.value;
+    let message = document.getElementById("message");
 
-         // If everything is valid, the form will be submitted
-         return true;
-      }
-   });
+    if (!/^[0-9\+]{10,}$/.test(phoneNumber)) {
+        message.textContent = " Please enter a 10-digit number with only integers and +.";
+        message.style.backgroundColor = "#ff4d4d";
+        phoneNumberInput.setCustomValidity("Invalid phone number");
+    } else {
+        message.textContent = "";
+        message.style.backgroundColor = "";
+        phoneNumberInput.setCustomValidity(""); 
+    }
+}
+
