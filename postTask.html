@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="index.html">Task Manager</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="main.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="postTask.html">Post a Task</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex text-end">
+                        <a href="userProfile.html" class="d-block link-body-emphasis text-decoration-none" aria-expanded="false">
+                            <img src="https://github.com/mdo.png" alt="User Profile" width="32" height="32" class="rounded-circle">
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Post a Task</h2>
+                    <form id="taskForm">
+                        <div class="mb-3">
+                            <label for="taskTitle" class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="taskTitle" minlength="10" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskDescription" class="form-label">Describe your Task</label>
+                            <textarea class="form-control" id="taskDescription" minlength="26" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskCategory" class="form-label">Task Category</label>
+                            <select class="form-select" id="taskCategory" required>
+                                <option value="hauling">Hauling</option>
+                                <option value="painting">Painting</option>
+                                <option value="errands">Errands</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskLocation" class="form-label">Task Location</label>
+                            <input type="text" class="form-control" id="taskLocation" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="workerName" class="form-label">Worker's Name</label>
+                            <input type="text" class="form-control" id="workerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="workerPhone" class="form-label">Worker's Phone Number</label>
+                            <input type="tel" class="form-control" id="workerPhone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="workerEmail" class="form-label">Worker's Email Address</label>
+                            <input type="email" class="form-control" id="workerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="remoteTask">
+                                <label class="form-check-label" for="remoteTask">
+                                    Can this task be completed remotely?
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Task</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+           apiKey: "AIzaSyCHy1eAxsDNiKx6r9OINytVx_gjJDkZZ2g",
+            authDomain: "servicefinder-88e05.firebaseapp.com",
+            databaseURL: "https://servicefinder-88e05-default-rtdb.firebaseio.com",
+            projectId: "servicefinder-88e05",
+            storageBucket: "servicefinder-88e05.appspot.com",
+            messagingSenderId: "795378069877",
+            appId: "1:795378069877:web:681ea358148d19a215e33c",
+            measurementId: "G-2TCH99G6J8"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Get form and input elements
+        const form = document.querySelector("#taskForm");
+        const taskTitle = document.querySelector("#taskTitle");
+        const taskDescription = document.querySelector("#taskDescription");
+        const taskCategory = document.querySelector("#taskCategory");
+        const taskLocation = document.querySelector("#taskLocation");
+        const workerName = document.querySelector("#workerName");
+        const workerPhone = document.querySelector("#workerPhone");
+        const workerEmail = document.querySelector("#workerEmail");
+        const remoteTask = document.querySelector("#remoteTask");
+
+        // Handle form submission
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Reference to the Tasks node in the database
+            const tasksRef = ref(database, "Tasks");
+
+            // Generate a new task reference
+            const newTaskRef = push(tasksRef);
+
+            // Set the task data in the database
+            set(newTaskRef, {
+                title: taskTitle.value,
+                description: taskDescription.value,
+                category: taskCategory.value,
+                location: taskLocation.value,
+                worker: {
+                    name: workerName.value,
+                    phone: workerPhone.value,
+                    email: workerEmail.value
+                },
+                remote: remoteTask.checked // Boolean indicating if task can be completed remotely
+            })
+            .then(() => {
+                alert("Task submitted successfully!");
+                
+                // Reset form after successful submission
+                form.reset();
+            })
+            .catch((error) => {
+                alert("Error submitting task: " + error.message);
+            });
+        });
+
+        // Log Firebase initialization to check connection
+        console.log(app);
+        console.log(database);
+    </script>
+</body>
+
+</html>
+

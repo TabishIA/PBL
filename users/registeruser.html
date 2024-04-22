@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register yourself</title>
+  <link rel="stylesheet" href="./css/register.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="wrapper">
+    <form id="registrationForm" action="" onsubmit="return validateForm()">
+      <h1>Registration</h1>
+      <div class="input-box">
+        <div class="input-field">
+          <input type="text" placeholder="Full Name" required>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-field">
+          <input type="text" placeholder="Username" required>
+          <i class='bx bxs-user'></i>
+        </div>
+      </div>
+      <div class="input-box">
+        <div class="input-field">
+          <input type="email" id="email" placeholder="Email" required>
+          <i class='bx bxs-envelope' ></i>
+        </div>
+        <div class="input-field">
+          <input type="tel" id="phoneNumber" pattern="[0-9\+]{10,}" placeholder="Phone Number" required oninput="checkPhoneNumber()">
+          <i class='bx bxs-phone' ></i>
+        </div>
+        <div class="input-box">
+          <div class="input-field">
+            <input type="password" id="password" placeholder="Password" required oninput="checkPassword()">
+            <i class='bx bxs-lock-alt' ></i>
+            <img src="hide.png" onclick="pass()" class="pass-icon" id="pass-icon">
+          </div>
+          <div class="input-field">
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required oninput="checkPassword()">
+            <i class='bx bxs-lock-alt' ></i>
+            <img src="hide.png" onclick="pass1()" class="pass-icon" id="pass-icon-confirm">
+          </div>
+        </div>
+      </div>
+      <label><input type="checkbox" required>I hereby declare that the above information provided is true and correct</label>
+      <p id="message"></p>
+      <button type="submit" class="btn">Register</button>
+    </form>
+  </div>
+
+  <script src="js/register.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+    // Your Firebase configuration
+    const firebaseConfig = {
+       apiKey: "AIzaSyBpGE6jJRXtpRD-mHkdsSSDpRzms4DDTZo",
+
+  authDomain: "users-63df1.firebaseapp.com",
+
+  projectId: "users-63df1",
+
+  storageBucket: "users-63df1.appspot.com",
+
+  messagingSenderId: "58483924783",
+
+  appId: "1:58483924783:web:aea033553ac61d54498bda",
+
+  measurementId: "G-6K8TY810PM"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Function to handle user registration
+    function registerUser(email, password) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed up successfully
+          const user = userCredential.user;
+          console.log("User registered:", user);
+          // Additional actions if needed
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error("Registration failed:", errorCode, errorMessage);
+          // Handle errors or display a message to the user
+        });
+    }
+
+    // Event listener for the form submission
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Get user input values
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Call the registerUser function with the provided email and password
+      registerUser(email, password);
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+

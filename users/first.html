@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <section id="header">
+    <div>
+      <header class="p-3 text-bg-light">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+            
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+              <li><a href="#features" class="nav-link px-2 text-black">About</a></li>
+              <li><a href="#" class="nav-link px-2 text-black"></a></li>
+            </ul>
+    
+            <div class="text-end">
+              <!--<button type="button" class="btn btn-light me-2">Login</button>
+              <button type="button" class="btn btn-light">Sign-up</button>-->
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+  </section>
+  <!-- Title -->
+  <section id="title" class="gradient-background">
+    <div class="container col-xxl-8 px-4 pt-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 pt-5">
+        <div class="col-12 col-sm-8 col-lg-6">
+          <img src="./images/task-list-image-freepik.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" height="200" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Get Your Work Done.</h1>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button type="button" class="btn btn-light btn-lg px-4 me-md-2"><a href="./loginuser.html" style="text-decoration: none; color: black;"> Login </a> </button>
+            <button type="button" class="btn btn-dark  btn-lg px-4"><a href="./registeruser.html" style="text-decoration: none; color:white"> Sign Up </a> </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- Features -->
+  <section id="features">
+    <div class="container mt-5">
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col d-flex align-items-start">
+          <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" height="30" fill="currentColor" class="bi bi-check2-circle"
+                viewBox="0 0 16 16">
+            <path
+                  d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+            <path
+                  d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="fs-2 text-body-emphasis">Easy to use.</h3>
+            <!--<p>So easy to use, even your dog could do it.</p>-->
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" height="30" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+              <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="fs-2 text-body-emphasis">Affordable Prices.</h3>
+            <!--<p>We have all the dogs, the greatest dogs.</p>-->
+            
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" height="30" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+              <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="fs-2 text-body-emphasis">Guaranteed to work.</h3>
+            <!--<p>Find the love of your dog's life or your money back.</p>-->
+            
+          </div>
+        </div>
+    </div>
+  </div>
+
+  </section>
+
+  <section id="features">
+    <div class="container px-4 py-5" id="icon-grid">
+      <h2 class="pb-2 border-bottom">Tasks</h2>
+  
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#speedometer2"></use></svg>
+          <div>
+            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Cleaning</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#toggles2"></use></svg>
+          <div>
+            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Plumbing</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#geo-fill"></use></svg>
+          <div>
+            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Delivery</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#tools"></use></svg>
+          <div>
+            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Others</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  
+  
+  <!-- Footer -->
+  <section id="footer">
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-body-secondary">Task Manager</p>
+    
+        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+    
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+          <li class="nav-item"><a href="https://www.freepik.com/free-vector/checklist-concept-illustration_5573507.htm#query=Task&position=19&from_view=search&track=sph&uuid=f3005edb-a4cf-425f-a269-6e1f6ea5d8b5">Image by storyset</a> on Freepik</li>
+        </ul>
+      </footer>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
+</html>
